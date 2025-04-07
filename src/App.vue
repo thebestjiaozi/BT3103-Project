@@ -21,9 +21,9 @@
 </template>
 
 <script setup>
-import VenueBooking from './components/VenueBooking.vue';
-import QuizPage from './components/QuizPage.vue';
-import VenueDetail from './components/VenueDetail.vue';
+import VenueBooking from './View/VenueBooking.vue';
+import QuizPage from './View/QuizPage.vue';
+import VenueDetail from './View/VenueDetail.vue';
 </script>
 
 <style scoped>

@@ -16,9 +16,9 @@
     <div id ="venue-container">
       <VenueDetail />
     </div>
-    
   </div>
 </template>
+
 
 <script setup>
 import VenueBooking from './components/VenueBooking.vue';

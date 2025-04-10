@@ -8,7 +8,7 @@
   <script setup>
   const props = defineProps({
     visitorData: {
-      type: Object,
+      type: Array,
       required: true
     }
   })

@@ -11,12 +11,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import VisitorChart from '../components/VisitorChart.vue'
 import DateSelector from '../components/DateSelector.vue'
 import TimeSlotBooking from '../components/TimeSlotBooking.vue'
+import firebaseApp from "../firebase.js";
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+const db = getFirestore(firebaseApp);
 
-const venueName = "The Deck";
+const venueName = "Food Court 1";
 const today = new Date()
 const formatDate = (date) => date.toISOString().split('T')[0]
 
@@ -27,11 +30,27 @@ const maxDate = formatDate(future)
 
 const selectedDate = ref(minDate)
 
-const visitorData = {
-  "8am": 20, "9am": 35, "10am": 50, "11am": 65,
-  "12pm": 70, "1pm": 80, "2pm": 95, "3pm": 100,
-  "4pm": 85, "5pm": 70, "6pm": 60, "7pm": 45, "8pm": 30
-};
+const visitorData = ref([]);
+onMounted(async () => {
+  const docRef = doc(db, 'venues', venueName);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    const rawData = data["Historical Volume"];
+    
+    const timeOrder = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+    const chartData = [["Time", "Visitors"]];
+
+    timeOrder.forEach(time => {
+      chartData.push([time, rawData[time] ?? 0]);
+    });
+
+    visitorData.value = chartData;
+  } else {
+    console.log("No visitor volume data found!");
+  }
+})
 
 const availableSlots = [
   { time: "8:00 AM - 9:00 AM", vacancy: 5 },

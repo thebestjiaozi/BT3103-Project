@@ -1,12 +1,9 @@
-// =====================
-// VenueDetailPage.vue (View)
-// =====================
 <template>
   <h1 class="title">Venue Details: {{ venueName }}</h1>
   <div class="venue-detail-container">
     <VisitorChart :visitor-data="visitorData" />
-    <DateSelector v-model:selected-date="selectedDate" :min-date="minDate" :max-date="maxDate" />
-    <TimeSlotBooking :slots="availableSlots" :selected-date="selectedDate" @book="bookSlot" />
+    <DateSelector v-model="selectedDate" :min-date="minDate" :max-date="maxDate" />
+    <TimeSlotBooking  :venueId="venueName" :selectedDate="selectedDate" @slotBooked="handleSlotBooked" />
   </div>
 </template>
 
@@ -52,26 +49,9 @@ onMounted(async () => {
   }
 })
 
-const availableSlots = [
-  { time: "8:00 AM - 9:00 AM", vacancy: 5 },
-  { time: "9:00 AM - 10:00 AM", vacancy: 5 },
-  { time: "10:00 AM - 11:00 AM", vacancy: 2 },
-  { time: "11:00 AM - 12:00 PM", vacancy: 0 },
-  { time: "1:00 PM - 2:00 PM", vacancy: 4 },
-  { time: "3:00 PM - 4:00 PM", vacancy: 1 },
-  { time: "4:00 PM - 5:00 PM", vacancy: 5 },
-  { time: "5:00 PM - 6:00 PM", vacancy: 4 },
-  { time: "6:00 PM - 7:00 PM", vacancy: 1 },
-  { time: "7:00 PM - 8:00 PM", vacancy: 3 }
-];
-
-const bookSlot = (slot) => {
-  if (slot.vacancy > 0) {
-    alert(`You have booked the slot: ${slot.time} on ${selectedDate.value}`);
-  } else {
-    alert("This slot is full. Please choose another.");
-  }
-};
+const handleSlotBooked = (slot) => {
+  alert(`You booked: ${slot.time} on ${slot.date}`)
+}
 </script>
 
 <style scoped>

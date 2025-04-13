@@ -9,9 +9,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import VisitorChart from '../components/VisitorChart.vue'
-import DateSelector from '../components/DateSelector.vue'
-import TimeSlotBooking from '../components/TimeSlotBooking.vue'
+import VisitorChart from '@/components/VenueDetail/VisitorChart.vue';
+import DateSelector from '@/components/VenueDetail/DateSelector.vue';
+import TimeSlotBooking from '@/components/VenueDetail/TimeSlotBooking.vue';
 import firebaseApp from "../firebase.js";
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
 const db = getFirestore(firebaseApp);

@@ -28,6 +28,7 @@
   import { getAuth } from 'firebase/auth';
   const db = getFirestore(firebaseApp);
 
+
   export default {
     data() {
       return {

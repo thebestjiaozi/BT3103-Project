@@ -15,9 +15,11 @@
       
       <button @click="goHome">Return to Main Page</button>
     </div>
+ 
   </template>
   
   <script>
+
   export default {
     name: 'Confirmation',
     data() {

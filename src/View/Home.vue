@@ -1,12 +1,15 @@
 <template>
+ 
   <div class="home-container">
     <h1>Welcome to Our Booking Site</h1>
     <p>Click below to start your booking process.</p>
     <button @click="startBooking">Start Booking</button>
   </div>
+
 </template>
 
 <script>
+
 export default {
   name: 'Home',
   methods: {

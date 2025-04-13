@@ -1,10 +1,12 @@
 <template>
+
   <h1 class="title">Venue Details: {{ venueName }}</h1>
   <div class="venue-detail-container">
     <VisitorChart :visitor-data="visitorData" />
     <DateSelector v-model="selectedDate" :min-date="minDate" :max-date="maxDate" />
     <TimeSlotBooking  :venueId="venueName" :selectedDate="selectedDate" @slotBooked="handleSlotBooked" />
   </div>
+
 </template>
 
 <script setup>
@@ -15,6 +17,7 @@ import TimeSlotBooking from '@/components/VenueDetail/TimeSlotBooking.vue'
 import firebaseApp from "../firebase.js";
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import { useRoute, useRouter } from 'vue-router'
+//import BaseLayout from '@/components/BaseLayout.vue'
 
 defineProps({
   venueId: String

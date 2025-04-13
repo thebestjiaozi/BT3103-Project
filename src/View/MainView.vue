@@ -1,5 +1,7 @@
 <template>
+  
   <div class="main-page">
+  
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
@@ -14,6 +16,7 @@
 
     <!-- Main Content -->
     <div class="content-container">
+
       <h2 class="section-title">Popular Locations</h2>
       <p class="section-description">Check out these frequently visited spots around campus</p>
       
@@ -36,6 +39,7 @@
       </ul>
     </div>
   </div>
+
 </template>
 
 <script>

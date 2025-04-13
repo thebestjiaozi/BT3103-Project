@@ -4,6 +4,9 @@ import RegisterView from '@/View/RegisterView.vue'
 import ResetPasswordView from '@/View/ResetPasswordView.vue'
 import QuizView from '@/View/QuizView.vue' // Import your quiz component
 import MainView from '@/View/MainView.vue'
+import VenueDetail from '@/View/VenueDetail.vue'
+import BookingView from '@/View/BookingView.vue'
+import Confirmation from '@/View/Confirmation.vue'
 
 const routes = [
   {
@@ -32,6 +35,22 @@ const routes = [
     name: 'main',
     component: MainView,
     meta: { requiresAuth: true } // Optional: Add route protection
+  },
+  {
+    path: '/venue/:venueId',
+    name: 'VenueDetail',
+    component: VenueDetail,
+    props: route => ({ venueId: route.params.venueId })
+  },
+  {
+    path: '/booking',
+    name: 'BookingView',
+    component: BookingView
+  },
+  {
+    path: '/confirmation',
+    name: 'Confirmation',
+    component: Confirmation
   }
 ]
 

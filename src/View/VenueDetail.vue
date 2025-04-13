@@ -9,14 +9,26 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import VisitorChart from '../components/VisitorChart.vue'
-import DateSelector from '../components/DateSelector.vue'
-import TimeSlotBooking from '../components/TimeSlotBooking.vue'
+import VisitorChart from '@/components/VenueDetail/VisitorChart.vue'
+import DateSelector from '@/components/VenueDetail/DateSelector.vue'
+import TimeSlotBooking from '@/components/VenueDetail/TimeSlotBooking.vue'
 import firebaseApp from "../firebase.js";
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import { useRoute, useRouter } from 'vue-router'
+
+defineProps({
+  venueId: String
+})
+
+const router = useRouter()
+
+const route = useRoute();
+const venueName = route.params.venueId;
+
+console.log("Venue ID:", venueName);
+
 const db = getFirestore(firebaseApp);
 
-const venueName = "Food Court 1";
 const today = new Date()
 const formatDate = (date) => date.toISOString().split('T')[0]
 
@@ -50,8 +62,17 @@ onMounted(async () => {
 })
 
 const handleSlotBooked = (slot) => {
-  alert(`You booked: ${slot.time} on ${slot.date}`)
-}
+  console.log(slot.date)
+  console.log(slot.time)
+  router.push({
+    name: 'BookingView',
+    query: {
+      venue: venueName,
+      date: slot.date,
+      time: slot.time,
+    }
+  });
+};
 </script>
 
 <style scoped>

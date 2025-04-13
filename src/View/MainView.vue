@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <button @click="goToDetails(location.id)" class="details-button">View Details →</button>
+          <button @click="goToDetails(location.name)" class="details-button">View Details →</button>
         </li>
       </ul>
     </div>
@@ -67,10 +67,13 @@ export default {
     }
   },
   methods: {
-    goToDetails(locationId) {
-      console.log(`Navigating to details of location ID: ${locationId}`);
-    }
+  goToDetails(locationId) {
+    this.$router.push({ 
+      name: 'VenueDetail', 
+      params: { venueId: locationId },
+    });
   }
+}
 };
 </script>
 
@@ -121,6 +124,7 @@ export default {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   opacity: 0.9;
+  font-weight: bold;
 }
 
 .search-bar {

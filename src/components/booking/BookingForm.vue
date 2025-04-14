@@ -32,6 +32,7 @@
 </template>
 
 <script>
+
 import app from '@/firebase'
 import { collection, addDoc, getFirestore, doc, updateDoc, increment } from 'firebase/firestore'
 

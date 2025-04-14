@@ -1,4 +1,5 @@
 <template>
+
   <div class="booking-container">
     <div>
       <h2>Enter Your Booking Details</h2>
@@ -11,6 +12,7 @@
       <button class="back-button" @click="goBack">Back</button>
     </div>
   </div>
+
 </template>
 
 <script setup>

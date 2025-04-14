@@ -7,6 +7,7 @@ import MainView from '@/View/MainView.vue'
 import VenueDetail from '@/View/VenueDetail.vue'
 import BookingView from '@/View/BookingView.vue'
 import Confirmation from '@/View/Confirmation.vue'
+import Ticket from '@/View/Ticket.vue'
 
 const routes = [
   {
@@ -51,7 +52,8 @@ const routes = [
     path: '/confirmation',
     name: 'Confirmation',
     component: Confirmation
-  }
+  },
+  { path: '/ticket', name: 'Ticket', component: Ticket }
 ]
 
 const router = createRouter({

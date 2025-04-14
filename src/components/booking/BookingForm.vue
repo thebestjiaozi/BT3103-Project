@@ -22,7 +22,7 @@
 
       <div class="form-group">
         <label for="visitorNumber">Number of Visitors:</label>
-        <input id="visitorNumber" v-model.number="visitorNumber" type="number" />
+        <input id="visitorNumber" v-model.number="visitorNumber" type="number" min="1" max="10" step = "1"/>
         <span v-if="errors.visitorNumber" class="error">{{ errors.visitorNumber }}</span>
       </div>
 
@@ -120,6 +120,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
 .container {
   background: white;
   padding: 20px;

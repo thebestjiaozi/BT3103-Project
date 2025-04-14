@@ -9,7 +9,6 @@
       <p><strong>Date:</strong> {{ formattedDate }}</p>
       <p><strong>Slot:</strong> {{ bookingDetails.slot }}</p>
 
-      <!-- ✅ QR Code as image -->
       <p><strong>QR Code:</strong></p>
       <img v-if="qrCodeSvg" :src="qrCodeSvg" alt="QR Code" class="qr-code" />
     </div>
@@ -24,6 +23,7 @@
 
 <script>
 import QRCode from 'qrcode'
+import emailjs from 'emailjs-com'
 
 export default {
   name: 'Confirmation',
@@ -36,36 +36,51 @@ export default {
   computed: {
     formattedDate() {
       if (this.bookingDetails && this.bookingDetails.date) {
-        return new Date(this.bookingDetails.date).toLocaleDateString();
+        return new Date(this.bookingDetails.date).toLocaleDateString()
       }
-      return 'No date provided';
+      return 'No date provided'
     }
   },
-  mounted() {
-    const q = this.$route.query;
+  async mounted() {
+    const q = this.$route.query
 
     this.bookingDetails = {
       name: q.name || 'No name provided',
       email: q.email || 'No email provided',
       slot: q.slot || 'No slot provided',
       date: q.date || 'No date provided',
-      venue: q.venue || 'No venue provided'
-    };
+      venue: q.venue || 'No venue provided',
+      bookingId: q.bookingId || 'No ID'
+    }
 
-    // ✅ This is the link that will be embedded in the QR code
-    const ticketUrl = `http://localhost:5173/ticket?id=${q.bookingId}`;
+    const ticketUrl = `http://localhost:5173/ticket?id=${q.bookingId}`; // ← update this after deploying
 
-    QRCode.toDataURL(ticketUrl)
-      .then(url => {
-        this.qrCodeSvg = url;
-      })
-      .catch(err => {
-        console.error('QR code generation failed', err);
-      });
+    try {
+      // ✅ Generate QR code
+      this.qrCodeSvg = await QRCode.toDataURL(ticketUrl)
+
+      // ✅ Send email via EmailJS
+      const templateParams = {
+        to_name: this.bookingDetails.name,
+        email: this.bookingDetails.email,
+        ticket_url: ticketUrl
+      }
+
+      await emailjs.send(
+        'service_4v6x3cd',      // Your service ID
+        'template_ygx2jyu',     // Your template ID
+        templateParams,
+        'ovhRFm2SAGW3kLIzH'     // Your public key
+      )
+
+      console.log('Email sent successfully!')
+    } catch (err) {
+      console.error('Error:', err)
+    }
   },
   methods: {
     goHome() {
-      this.$router.push('/main');
+      this.$router.push('/main')
     }
   }
 }

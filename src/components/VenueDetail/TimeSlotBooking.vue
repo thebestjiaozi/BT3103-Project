@@ -7,8 +7,8 @@
           <span class="time">{{ slot.time }}</span>
           <span class="vacancy">Vacancy: {{ slot.vacancy }}</span>
         </div>
-        <button :disabled="slot.vacancy === 0" @click="bookSlot(slot)">
-          {{ slot.vacancy === 0 ? "Full" : "Book" }}
+        <button :disabled="slot.vacancy <= 0" @click="bookSlot(slot)">
+          {{ slot.vacancy <= 0 ? "Full" : "Book" }}
         </button>
       </div>
     </div>

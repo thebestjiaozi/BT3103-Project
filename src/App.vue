@@ -33,7 +33,7 @@ const route = useRoute()
 
 const authPages = ['login', 'register', 'reset-password']
 const showButtons = computed(() => !authPages.includes(route.name))
-const isMain = computed(() => route.name === 'main')
+const isMain = computed(() => route.name === 'main' ｜｜ route.name == 'quiz')
 
 function logout() {
   localStorage.removeItem('loggedIn')

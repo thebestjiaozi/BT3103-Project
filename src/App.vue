@@ -1,19 +1,4 @@
-<!--
-<template>
-  <router-view/>
-</template>
 
-<style>
-/* Add global styles here if needed */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
-  background-image: url('https://content.presspage.com/uploads/2580/1920_utown.jpg?10000');
-}
-</style>
--->
 <template>
   <div id="app">
     <div class="top-links" v-if="showButtons">
@@ -42,6 +27,10 @@ function logout() {
 
 
 <style>
+#app {
+  padding-top: 10px; /* 👈 adjust this value as needed */
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -52,6 +41,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
+  opacity: 0.95
 }
 
 .top-links {

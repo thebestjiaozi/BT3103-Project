@@ -53,7 +53,7 @@ export default {
       bookingId: q.bookingId || 'No ID'
     }
 
-    const ticketUrl = `http://localhost:5173/ticket?id=${q.bookingId}`; // ← update this after deploying
+    const ticketUrl = `https://bt-3103-project.vercel.app/ticket?id=${q.bookingId}`; // ← update this after deploying
 
     try {
       // ✅ Generate QR code

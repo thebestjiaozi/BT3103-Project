@@ -30,15 +30,15 @@
         userAnswers: Array(10).fill(null),
         questions: [
           { question: "What is the official visiting hour of NUS?", options: ["06:00-18:00", "09:00-18:00", "08:00-20:00", "12:00-23:59"], answer: "08:00-20:00" },
-          { question: "What is the maximum duration you can stay at one place?", options: ["30mins", "1hr", "2hrs", "No Limit"], answer: "1hr" },
-          { question: "Which office oversees student conduct at NUS?", options: ["Dean’s Office", "Registrar’s Office", "Office of Student Affairs", "NUS Council"], answer: "Office of Student Affairs" },
-          { question: "How long is a semester at NUS (excluding exams)?", options: ["10 weeks", "12 weeks", "13 weeks", "15 weeks"], answer: "13 weeks" },
-          { question: "What is the maximum number of modular credits (MCs) a full-time student can take per semester?", options: ["18", "20", "22", "24"], answer: "23" },
-          { question: "What is the penalty for plagiarism at NUS?", options: ["Warning", "Failing the module", "Disciplinary action", "All of the above"], answer: "All of the above" },
-          { question: "How long can students access the NUS library after graduation?", options: ["Lifetime", "1 year", "5 years", "Not allowed"], answer: "1 year" },
+          { question: "Which lecture theatre is open for visitors?", options: ["LT27", "LT19", "Anyone if not in lecture time", "Not anyone at anytime"], answer: "Not anyone at anytime" },
+          { question: "Which office provide service for visitors?", options: ["Dean's Office", "NUS Office of the Associate Provost", "Office of Student Affairs", "NUS Council"], answer: "NUS Office of the Associate Provost" },
+          { question: "Is visitors allowed to take NUS buses on weekdays?", options: ["Yes", "No"], answer: "No" },
+          { question: "Which of the following is not NUS bus?", options: ["D2", "A2", "BTC", "95"], answer: "95" },
+          { question: "After eating at canteen in NUS, what is wrong to do?", options: ["Return the plate", "Leave the plate there", "Clean the table", "None of the above"], answer: "Leave the plate there" },
+          { question: "How long can visitors stay in the NUS library per visit?", options: ["30 minutes", "1 hour", "2 hour", "Not allowed"], answer: "Not allowed" },
           { question: "Which bus service operates within the NUS campus?", options: ["NUSExpress", "NUSLoop", "Campus Rider", "NUSShuttle"], answer: "NUSLoop" },
           { question: "What is the NUS policy on smoking?", options: ["Allowed in designated areas", "Banned on campus", "Allowed near hostels", "Only allowed for staff"], answer: "Banned on campus" },
-          { question: "What is the consequence of missing 3 tutorial sessions without valid reason?", options: ["Warning", "Drop from module", "Fail the module", "Nothing"], answer: "Drop from module" }
+          { question: "At what time, visitors are allowed to enter canteen at Utown?", options: ["11:40am", "12:30pm", "6:30pm", "None of the above"], answer: "None of the above" }
         ]
       };
     },
